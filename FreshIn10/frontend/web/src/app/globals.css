@@ -1,0 +1,330 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #16a34a;
+    --brand-light: #22c55e;
+    --brand-dark: #15803d;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-900 bg-white overflow-x-hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-green-400 rounded-full hover:bg-green-500;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-green-500;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer;
+  }
+
+  .gradient-green {
+    @apply bg-gradient-to-r from-green-600 to-emerald-500;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #0f4c2a 0%, #16a34a 50%, #22c55e 100%);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded-lg;
+  }
+
+  /* Bottom cart bar on mobile */
+  .cart-bar {
+    @apply fixed bottom-0 left-0 right-0 z-[50] bg-green-600 text-white p-4 md:hidden shadow-2xl;
+  }
+
+  /* Premium card styles */
+  .card-premium {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden;
+  }
+
+  .card-premium-hover {
+    @apply hover:border-green-200 hover:shadow-green-100/50;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-green-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-700 transition-all active:scale-95 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-900 font-semibold px-6 py-3 rounded-xl hover:bg-gray-200 transition-all;
+  }
+
+  .btn-outline {
+    @apply border-2 border-green-600 text-green-600 font-semibold px-6 py-3 rounded-xl hover:bg-green-50 transition-all;
+  }
+
+  /* Badge styles */
+  .badge-success {
+    @apply inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  /* Input styles */
+  .input-primary {
+    @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Advanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { opacity: 1; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.8); }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.5s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gradient text */
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-green-600 via-emerald-500 to-green-400 bg-clip-text text-transparent;
+  }
+
+  /* Backdrop blur */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/30 backdrop-blur-md border border-white/20;
+  }
+
+  /* Shadow utilities */
+  .shadow-green-sm {
+    @apply shadow-sm shadow-green-200;
+  }
+
+  .shadow-green-md {
+    @apply shadow-md shadow-green-200;
+  }
+
+  .shadow-green-lg {
+    @apply shadow-lg shadow-green-300;
+  }
+
+  /* 3D card hover */
+  .card-3d {
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+  }
+  .card-3d:hover {
+    transform: translateY(-10px) rotateX(6deg) rotateY(-3deg) scale(1.02);
+    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.18), 0 12px 24px -4px rgba(22,163,74,0.25);
+  }
+
+  /* Product card 3D */
+  .product-card-3d {
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  .product-card-3d:hover {
+    transform: translateY(-8px) rotateX(5deg) scale(1.03);
+    box-shadow: 0 24px 48px -8px rgba(0,0,0,0.14), 0 8px 20px -4px rgba(22,163,74,0.25);
+  }
+
+  /* Category pill 3D */
+  .cat-pill {
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    transform-style: preserve-3d;
+  }
+  .cat-pill:hover {
+    transform: translateY(-4px) scale(1.05) rotateX(8deg);
+    box-shadow: 0 16px 32px -6px rgba(22,163,74,0.3);
+  }
+
+  /* Add-to-cart pulse */
+  .cart-btn-pulse:active {
+    animation: cartPress 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  /* Hero badge */
+  .hero-badge {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.25);
+    animation: heroBadgeFloat 3s ease-in-out infinite;
+  }
+}
+
+/* ── 3D Extra Keyframes for grocery ─── */
+@keyframes popInScale {
+  0%   { opacity: 0; transform: scale(0.7) rotateY(-25deg); }
+  65%  { transform: scale(1.06) rotateY(3deg); }
+  100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+}
+
+@keyframes cartPress {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.88) rotateZ(-5deg); }
+  100% { transform: scale(1) rotateZ(0deg); }
+}
+
+@keyframes heroBadgeFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-6px) rotate(2deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes iconBounce3d {
+  0%, 100% { transform: translateY(0) rotateX(0deg); }
+  30%       { transform: translateY(-10px) rotateX(15deg); }
+  60%       { transform: translateY(-4px) rotateX(-5deg); }
+}
+
+@keyframes counterUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.animate-pop-in-scale  { animation: popInScale   0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+.animate-icon-bounce   { animation: iconBounce3d 2.5s ease-in-out infinite; }
+.animate-counter-up    { animation: counterUp    0.4s ease-out both; }
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.perspective-1200 { perspective: 1200px; }
+.preserve-3d      { transform-style: preserve-3d; }
+.backface-hidden  { backface-visibility: hidden; }

@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+}
+
+[data-theme='black'] {
+  --bg-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --card-bg: #111827;
+  --border-color: #1e293b;
+}
+
+[data-theme='blue'] {
+  --bg-color: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+}
+
+[data-theme='white'] {
+  --bg-color: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #475569;
+  --card-bg: #f8fafc;
+  --border-color: #e2e8f0;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.4); border-radius: 99px; }
+}
+
+@layer components {
+  .skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.06) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 16px;
+  }
+
+  .glass-dark {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-neon {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  
+  .stat-tile {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .status-online {
+    background: linear-gradient(135deg, #166534, #16a34a);
+    box-shadow: 0 0 20px rgba(34,197,94,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    animation: onlinePulse 2s ease-in-out infinite;
+  }
+  .status-offline {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+  }
+
+  .btn-action {
+    transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
+  }
+  .btn-action:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+  .btn-action:active {
+    transform: scale(0.96) translateY(1px);
+  }
+
+  .timeline-dot-done {
+    background: radial-gradient(circle at 30% 30%, #4ade80, #16a34a);
+    box-shadow: 0 0 12px rgba(34,197,94,0.6);
+    animation: dotPulse 2.5s ease-in-out infinite;
+  }
+  .timeline-dot-pending {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+  }
+
+  .header-dark {
+    background: var(--bg-color);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes onlinePulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(34,197,94,0.4); }
+  50%       { box-shadow: 0 0 28px rgba(34,197,94,0.8); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.2); }
+}
+
+@layer utilities {
+  .animate-fade-in-up  { animation: fadeInUp   0.45s cubic-bezier(0.22,1,0.36,1) both; }
+  .animate-pop-in      { animation: popIn      0.55s cubic-bezier(0.34,1.56,0.64,1) both; }
+  .animate-float-3d    { animation: float3D    4s ease-in-out infinite; }
+
+  .text-neon-green {
+    color: #4ade80;
+    text-shadow: 0 0 12px rgba(74,222,128,0.7);
+  }
+
+  .border-neon {
+    border-color: rgba(34,197,94,0.4);
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.75); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float3D {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
